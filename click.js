@@ -1,4 +1,4 @@
-var startButton = document.getElementById('startButton');
+var button = document.getElementById('gameButton');
 var resetButton = document.getElementById('resetButton');
 var timeInput = document.getElementById('timeInput');
 var timer = document.getElementById('timer');
@@ -9,6 +9,13 @@ var timeLeft = 10;
 var gameRunning = false;
 var countdown;
 
+button.addEventListener('touchstart', function(event) {
+  event.preventDefault();
+  if (gameRunning) {
+    score++;
+    scoreDisplay.textContent = score;
+  }
+});
 startButton.addEventListener('click', function() {
   var selectedTime = parseInt(timeInput.value, 10);
   if (selectedTime >= 10 && selectedTime <= 60) {
