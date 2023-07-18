@@ -1,7 +1,7 @@
 body {
   text-align: center;
   font-family: Arial, sans-serif;
-  background-image: url('background-image.jpg');
+  background-image: url('retro.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -87,14 +87,13 @@ p {
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 32px;
     margin-bottom: 15px;
   }
 
   button {
-    padding: 12px 24px;
-    font-size: 18px;
-    touch-action: manipulation;
+    padding: 20px 40px;
+    font-size: 28px;
   }
 
   #timer {
@@ -102,7 +101,7 @@ p {
   }
 
   #score {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 
