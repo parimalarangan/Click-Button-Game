@@ -81,6 +81,17 @@ p {
 
 /* Media Queries for Mobile Devices */
 @media only screen and (max-width: 600px) {
+  body{
+      text-align: center;
+  font-family: Arial, sans-serif;
+  background-image: url('retro.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  }
   .container {
     max-width: 90%;
     margin: 50px auto;
