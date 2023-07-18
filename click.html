@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click the Button Game</title>
+  <link rel="stylesheet" type="text/css" href="click.css">
+</head>
+<body>
+ <div class="container">  
+  <h1>Click the Button Game</h1>
+  <p>Click the button as many times as you can within the specified time.</p>
+  <div id="settings">
+    <label for="timeInput">Set Time (seconds):</label>
+    <input type="number" id="timeInput" min="10" max="60" value="10">
+    <button id="startButton">Start</button>
+  </div>
+  <button id="gameButton" disabled>Click Me!</button>
+  <p>Time Remaining: <span id="timer">10</span> seconds</p>
+  <p>Score: <span id="score">0</span></p>
+  <button id="resetButton" disabled>Reset</button>
+</div> 
+  <script src="click.js"></script>
+</body>
+</html>
+
