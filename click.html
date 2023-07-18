@@ -2,7 +2,87 @@
 <html>
 <head>
   <title>Click the Button Game</title>
-  <link rel="stylesheet" type="text/css" href="click.css">
+<style>
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-image: url('retro.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    max-width: 400px;
+    margin: 100px auto;
+    border-radius: 20px;
+  }
+  
+  h1 {
+    color: #ff4081;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  button:hover {
+    background-color: #ff79b0;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  #settings {
+    margin-bottom: 20px;
+  }
+  
+  #settings label {
+    margin-right: 10px;
+    color: #ff4081;
+    font-weight: bold;
+  }
+  
+  #timer {
+    font-weight: bold;
+    color: #ff4081;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  #score {
+    font-weight: bold;
+    color: #ff4081;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+</style>
 </head>
 <body>
  <div class="container">  
@@ -18,7 +98,74 @@
   <p>Score: <span id="score">0</span></p>
   <button id="resetButton" disabled>Reset</button>
 </div> 
-  <script src="click.js"></script>
+  <script>
+    var startButton = document.getElementById('startButton');
+var resetButton = document.getElementById('resetButton');
+var timeInput = document.getElementById('timeInput');
+var timer = document.getElementById('timer');
+var scoreDisplay = document.getElementById('score');
+var gameButton = document.getElementById('gameButton');
+var score = 0;
+var timeLeft = 10;
+var gameRunning = false;
+var countdown;
+
+startButton.addEventListener('click', function() {
+  var selectedTime = parseInt(timeInput.value, 10);
+  if (selectedTime >= 10 && selectedTime <= 60) {
+    startGame(selectedTime);
+  } else {
+    alert('Please enter a valid time between 10 and 60 seconds.');
+  }
+});
+
+gameButton.addEventListener('click', function() {
+  if (gameRunning) {
+    score++;
+    scoreDisplay.textContent = score;
+  }
+});
+
+resetButton.addEventListener('click', function() {
+  resetGame();
+});
+
+function startGame(time) {
+  gameRunning = true;
+  startButton.disabled = true;
+  timeInput.disabled = true;
+  gameButton.disabled = false;
+  resetButton.disabled = true;
+  score = 0;
+  scoreDisplay.textContent = score;
+  timeLeft = time;
+  timer.textContent = timeLeft + ' seconds';
+
+  countdown = setInterval(function() {
+    timeLeft--;
+    timer.textContent = timeLeft + ' seconds';
+
+    if (timeLeft === 0) {
+      clearInterval(countdown);
+      gameButton.disabled = true;
+      resetButton.disabled = false;
+      gameRunning = false;
+      alert('Time\'s up! Your final score is ' + score);
+    }
+  }, 1000);
+}
+
+function resetGame() {
+  clearInterval(countdown);
+  startButton.disabled = false;
+  timeInput.disabled = false;
+  gameButton.disabled = true;
+  resetButton.disabled = true;
+  timer.textContent = '10 seconds';
+}
+
+resetGame();
+  </script>
 </body>
 </html>
 
